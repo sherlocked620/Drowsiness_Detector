@@ -7,9 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1f3MModbLtXxKviFaYce-Mf2kRElROCwb
 """
 
-from google.colab import drive
-drive.mount('/content/gdrive', force_remount= True)
-
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
@@ -21,7 +18,7 @@ from imutils import paths
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from keras.models import Model
+from keras.models import Model, Sequential
 import random
 from keras.applications import MobileNetV2
 
@@ -30,7 +27,15 @@ from keras.applications import MobileNetV2
 mobile = MobileNetV2(input_shape=(224,224,3),include_top=False,weights='imagenet')
 
 #print(mobile.summary())
-
+'''mobile = Sequential([
+    Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(224,224,3)),
+    MaxPooling2D(pool_size=(3,3)),
+    Conv2D(32,(3,3),activation='relu'),
+    MaxPooling2D(pool_size=(3,3)),
+#32 convolution filters used each of size 3x3
+#again
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(3,3))])'''
 # layer should not be change
 for layer in mobile.layers:
   layer.trainable = False
@@ -116,7 +121,7 @@ aug_train = ImageDataGenerator(rescale= 1.0/255.,
 	width_shift_range=0.2,
 	height_shift_range=0.2,
 	shear_range=0.15,
-	horizontal_flip=True,
+	#horizontal_flip=True,
 	fill_mode="nearest")
 
 aug_test  = ImageDataGenerator(rescale= 1.0/255.)
@@ -156,26 +161,5 @@ print(confusion_matrix(y_true,y_p))
 from sklearn.metrics import classification_report
 print(classification_report(y_true,y_p))
 
-"""# **CNN+SVM**
-Only SVM gives highest probability with cnn layers.other models like Decision tree and randomforest gives 68%,80% probability respectively. WE use dense layer of cnn as a feature extractor.
-"""
 
-# define a new model
-model_new = Model(inputs = mobile.input , outputs = op_layer)
-
-#compiling model
-#model_new.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['acc'])
-
-# applying SVM with cnn
-train_new = model_new.predict(trainX)
-test_new = model_new.predict(testX)
-
-from sklearn.svm import SVC
-
-svm = SVC(kernel='rbf')
-
-svm.fit(train_new,np.argmax(trainY,axis=1))
-svm.score(train_new,np.argmax(trainY,axis=1))
-
-svm.score(test_new,np.argmax(testY,axis=1))
 
