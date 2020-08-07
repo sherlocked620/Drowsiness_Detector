@@ -121,16 +121,27 @@ aug_train = ImageDataGenerator(rescale= 1.0/255.,
 	width_shift_range=0.2,
 	height_shift_range=0.2,
 	shear_range=0.15,
-	#horizontal_flip=True,
+	horizontal_flip=True,
 	fill_mode="nearest")
 
 aug_test  = ImageDataGenerator(rescale= 1.0/255.)
+
+def scheduler(epoch, lr):
+   if epoch < 10:
+     return lr
+   else:
+     return lr * tf.math.exp(-0.1)
+my_callbacks = [
+    tf.keras.callbacks.EarlyStopping(patience=2),
+    tf.keras.callbacks.LearningRateScheduler(scheduler, verbose=1)]
+
 
 hist = model.fit_generator(steps_per_epoch=len(trainX)//BS,
                            generator=aug_train.flow(trainX, trainY, batch_size=BS),
                            validation_data= (testX, testY),
                            validation_steps=len(testX)//BS,
-                           epochs=EPOCHS)
+                           callbacks=my_callbacks,
+			   epochs=EPOCHS)
 
 # print accuracy and loss graph
 import matplotlib.pyplot as plt
@@ -151,15 +162,7 @@ print('validation loss is {}'.format(acc[0]))
 
 #model.save( 'model_face',overwrite=True)
 
-# printing confusion matrix
-from sklearn.metrics import confusion_matrix
-y_pred = model.predict(testX)
-y_p = np.argmax(y_pred,axis=1)
-y_true = np.argmax(testY,axis=1)
-print(confusion_matrix(y_true,y_p))
 
-from sklearn.metrics import classification_report
-print(classification_report(y_true,y_p))
 
 
 
