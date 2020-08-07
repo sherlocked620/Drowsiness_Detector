@@ -176,5 +176,11 @@ svm.fit(train_new,trainY)
 svm.score(train_new,trainY)
 svm.score(test_new,testY)
 
+from sklearn.metrics import confusion_matrix, classification_report
 
-
+y_pred = svm.predict(test_new)
+#y_p = np.argmax(y_pred,axis=1)
+y_true = testY
+print(confusion_matrix(y_true,y_pred))
+print(classification_report(y_true,y_pred))
+svm.classes_
