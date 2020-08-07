@@ -14,8 +14,8 @@ It is very useful as a lot of accidents happen due driver feeling sleepy. As sle
   SVM model accuracy
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(118).png">
   XGBoost model accuracy
-  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png" width=270 height=300 />
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png">
   XGBoost Report
-  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(120).png" width=270 height=300 />
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(120).png">
 </p>
 <br/>
