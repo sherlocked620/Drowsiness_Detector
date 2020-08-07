@@ -8,3 +8,14 @@ It is very useful as a lot of accidents happen due driver feeling sleepy. As sle
 - Collection of dataset.
 - Creation of classifier model with the best possible accuracy.
 - Deployment of classifier with the help of opencv
+
+### Accuracy and Report
+<p align="center">
+  SVM model accuracy
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(118).png" width=270 height=300 />
+  XGBoost model accuracy
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png" width=270 height=300 />
+  XGBoost Report
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(120).png" width=270 height=300 />
+</p>
+<br/>
