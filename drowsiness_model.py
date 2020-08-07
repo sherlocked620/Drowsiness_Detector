@@ -162,7 +162,6 @@ print('validation loss is {}'.format(acc[0]))
 
 #model.save( 'model_face',overwrite=True)
 
-
 model_new = Model(inputs = mobile.input , outputs = op_layer)
 train_new = model_new.predict(trainX)
 test_new = model_new.predict(testX)
@@ -184,3 +183,20 @@ y_true = testY
 print(confusion_matrix(y_true,y_pred))
 print(classification_report(y_true,y_pred))
 svm.classes_
+
+import xgboost as xgb
+
+xb = xgb.XGBClassifier()
+
+xb.fit(train_new,trainY)
+xb.score(train_new,trainY)
+xb.score(test_new,testY)
+
+from sklearn.metrics import confusion_matrix, classification_report
+
+y_pred = xb.predict(test_new)
+y_true = testY
+print(confusion_matrix(y_true,y_pred))
+print(classification_report(y_true,y_pred))
+xb.classes_
+
