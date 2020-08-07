@@ -45,7 +45,7 @@ for layer in mobile.layers:
 op_layer = mobile.output
 op_layer = MaxPooling2D(pool_size=(3,3))(op_layer)
 op_layer = Flatten()(op_layer)
-op_final = Dense(128,activation='relu')(op_layer)
+op_final = Dense(256,activation='relu')(op_layer)
 op_final = Dropout((0.5))(op_final)
 op_final = Dense(1,activation= 'sigmoid')(op_final)
 
@@ -54,9 +54,9 @@ op_final = Dense(1,activation= 'sigmoid')(op_final)
 model = Model(inputs = mobile.input , outputs = op_final)
 
 # compiling model
-model.compile(optimizer = 'adam', 
+model.compile(optimizer = 'Adam', 
               loss = 'binary_crossentropy', 
-              metrics = ['acc'])
+              metrics = ['accuracy'])
 
 #tryz = '/content/gdrive/My Drive/drowsiness detector/datasets/train/face_data/closed_eye'
 #try2 = '/content/gdrive/My Drive/drowsiness detector/datasets/train/face_data/open_eye'
@@ -112,7 +112,7 @@ label_value = to_categorical(labels)
 # partition the data into training and testing splits using 75% of
 # the data for training and the remaining 25% for testing
 (trainX, testX, trainY, testY) = train_test_split(data, labels,
-	test_size=0.20, stratify=labels, random_state=0,shuffle = True)
+	test_size=0.25, stratify=labels, random_state=0,shuffle = True)
 
 aug_train = ImageDataGenerator(rescale= 1.0/255.,
 	rotation_range=20,
@@ -130,11 +130,11 @@ hist = model.fit_generator(steps_per_epoch=len(trainX)//BS,
                            generator=aug_train.flow(trainX, trainY, batch_size=BS),
                            validation_data= (testX, testY),
                            validation_steps=len(testX)//BS,
-                           epochs=10)
+                           epochs=EPOCHS)
 
 # print accuracy and loss graph
 import matplotlib.pyplot as plt
-plt.plot(hist.history["acc"])
+plt.plot(hist.history["accuracy"])
 plt.plot(hist.history['val_acc'])
 plt.plot(hist.history['loss'])
 plt.plot(hist.history['val_loss'])
