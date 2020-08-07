@@ -163,6 +163,18 @@ print('validation loss is {}'.format(acc[0]))
 #model.save( 'model_face',overwrite=True)
 
 
+model_new = Model(inputs = mobile.input , outputs = op_layer)
+train_new = model_new.predict(trainX)
+test_new = model_new.predict(testX)
+print(test_new)
+
+from sklearn.svm import SVC
+
+svm = SVC(kernel='rbf')
+
+svm.fit(train_new,trainY)
+svm.score(train_new,trainY)
+svm.score(test_new,testY)
 
 
 
