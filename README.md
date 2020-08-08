@@ -16,10 +16,11 @@ Many statistical reports show that a significant number of accidents are caused 
   XGBoost model accuracy
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png">
   XGBoost Report
-  SAMPLE
-  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(118).png">
-  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png">
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(120).png">
-  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/images%20(69).jpeg">
+  SAMPLE
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/13.jpg" width=270 height=300 />
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/19.jpeg" width=270 height=300 />
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/21.jpg" width=270 height=300 />
+  <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/images%20(69).jpeg" width=270 height=300 />
 </p>
 <br/>
