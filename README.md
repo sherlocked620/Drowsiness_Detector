@@ -17,7 +17,7 @@ Many statistical reports show that a significant number of accidents are caused 
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(119).png">
   XGBoost Report
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/Screenshot%20(120).png">
-  SAMPLE
+  SAMPLE<br/>
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/13.jpg" width=270 height=300 />
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/19.jpeg" width=270 height=300 />
   <img src="https://github.com/sherlocked620/Drowsiness_Detector/blob/master/sample/21.jpg" width=270 height=300 />
